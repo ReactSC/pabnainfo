@@ -40,12 +40,6 @@ const Navbar = (props) => {
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const classes = useStyles();
 
-  const arr = [
-    {name: 'About', url:'/about'},
-    {name: 'Contact', url:'/contact'},
-    {name: 'FAQ', url:'/faq'},
-    {name: 'Worker', url:'/sp'}
-  ]
 
   return(
     <div>
@@ -85,3 +79,11 @@ const Navbar = (props) => {
   )
 }
 export default Navbar;
+
+export const arr = [
+  {name: 'About', url:'/about'},
+  {name: 'Contact', url:'/contact'},
+  {name: 'FAQ', url:'/faq'},
+  {name: 'Worker', url:'/sp'},
+  {name: 'DashBoard', url:'/dashboard'}
+]

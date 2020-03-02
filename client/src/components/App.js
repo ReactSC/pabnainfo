@@ -11,6 +11,7 @@ import ServiceProvider from './pages/ServiceProvider';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import DashBoard from './pages/Dashboard'
 
 
 import './App.css';
@@ -28,6 +29,7 @@ const App = () => {
       <Navbar />
       <Switch>
 
+      <Route path="/dashboard" component={ DashBoard } />
       <Route path="/faq" component={ FAQ } />
       <Route path="/contact" component={ Contact } />
       <Route path="/about" component={ About } />

@@ -1,8 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { SwipeableDrawer, IconButton, List, Divider, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-
 import { Inbox, Mail, Menu } from '@material-ui/icons';
+
+import { NavLink } from 'react-router-dom';
+
+import { arr } from './Navbar';
 
 const useStyles = makeStyles({
   list: {
@@ -41,24 +44,23 @@ const SideDrawer = props => {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {['Home', 'Contacts', 'About Us', 'Help'].map((text, index) => (
-          <ListItem button key={text}>
-            {/* <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail />}</ListItemIcon> */}
-            <ListItemText primary={text} />
+        <NavLink to="/" exact >
+          <ListItem button>
+            <ListItemText primary="Home" />
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['Doctors', 'Vicles', 'Holeseller'].map((text, index) => (
-          <ListItem button key={text}>
-            {/* <ListItemIcon>{index % 2 === 0 ? <Inbox /> : <Mail/>}</ListItemIcon> */}
-            <ListItemText primary={text} />
-          </ListItem>
+        </NavLink>
+
+        {arr.map((navItem, index) => (
+            <NavLink key={index} to={navItem.url}>
+              <ListItem button> 
+                <ListItemText primary={navItem.name} />
+              </ListItem>
+            </NavLink>
         ))}
       </List>
     </div>
   );
+
 
   return (
     <Fragment>
