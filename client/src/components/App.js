@@ -20,8 +20,9 @@ import './App.css';
 const App = () => {
   // const hello = useContext(PabnainfoContext);
   // console.log(hello)
-  document.title='Pabnainfo';
-  
+  document.title='Pabna Info';
+  // const root = '/pabnainfo';
+
   return (
     <Fragment>
       <Navbar />
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/about" component={ About } />
       <Route path="/sp" component={ ServiceProvider } />
       <Route path="/" exact component={ Home } />
+      <Route component={ Home } />
 
       </Switch>
       <Footer />
