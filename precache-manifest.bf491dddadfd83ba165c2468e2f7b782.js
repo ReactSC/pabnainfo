@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "264d966556dc2a9358f369efc56eeec5",
+    "revision": "11d682cf1b28af3ccdef2cebe0860b8f",
     "url": "/pabnainfo/index.html"
   },
   {
-    "revision": "32eea6c7895cb0e0045e",
+    "revision": "153ff04016ae607e58ce",
     "url": "/pabnainfo/static/css/2.31677d80.chunk.css"
   },
   {
-    "revision": "ef31b2d328eb7ce8274c",
+    "revision": "6f74f02291b1e76e82c1",
     "url": "/pabnainfo/static/css/main.d1b05096.chunk.css"
   },
   {
-    "revision": "32eea6c7895cb0e0045e",
-    "url": "/pabnainfo/static/js/2.ca6c3ce4.chunk.js"
+    "revision": "153ff04016ae607e58ce",
+    "url": "/pabnainfo/static/js/2.bd8b53e3.chunk.js"
   },
   {
     "revision": "68fab0655c55ec347ec9a935d49eefb8",
-    "url": "/pabnainfo/static/js/2.ca6c3ce4.chunk.js.LICENSE.txt"
+    "url": "/pabnainfo/static/js/2.bd8b53e3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ef31b2d328eb7ce8274c",
-    "url": "/pabnainfo/static/js/main.c45b2f35.chunk.js"
+    "revision": "6f74f02291b1e76e82c1",
+    "url": "/pabnainfo/static/js/main.56d1f9dc.chunk.js"
   },
   {
     "revision": "84d277fe00d785d9aa4d",
