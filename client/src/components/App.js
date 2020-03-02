@@ -1,14 +1,9 @@
 import React, { useContext, Fragment } from 'react';
 // import { PabnainfoContext } from './store/Contexts';
 import Navbar from './main/Navbar';
-import Hero from './sections/Hero';
-import Categories from './sections/Categories';
-import CardSection from './sections/CardSection';
-import Testimonial from './sections/Testimonial';
-import CardSection2 from './sections/CardSection2';
-import Partners from './sections/Partners';
+import Home from './pages/Home';
+
 import Footer from './main/Footer';
-import Cradit from './main/Cradit';
 
 import './App.css';
 
@@ -21,17 +16,10 @@ const App = () => {
   
   return (
     <Fragment>
-      
-      {/* <div className="bg-dark"> */}
       <Navbar />
-      <Hero /> 
-      <Categories />
-      <CardSection />
-      <Testimonial />
-      <CardSection2 />
-      <Partners />
+      <Home />
       <Footer />
-      <Cradit />
+
         
 
         {/* <div className="container">
