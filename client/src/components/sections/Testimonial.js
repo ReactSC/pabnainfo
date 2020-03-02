@@ -25,6 +25,7 @@ const Testimonial = props => {
               // nav
               URLhashListener
               startPosition= {0}
+              autoplayHoverPause
               // navText={["Prev", "Next"]}
               >
               <Item />

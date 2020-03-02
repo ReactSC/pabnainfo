@@ -17,6 +17,7 @@ import './App.css';
 const App = () => {
   // const hello = useContext(PabnainfoContext);
   // console.log(hello)
+  document.title='Pabnainfo';
   
   return (
     <Fragment>

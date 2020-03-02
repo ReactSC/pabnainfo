@@ -33,7 +33,7 @@ const Categories = () => {
           autoplay
           autoplayTimeout={2500}
           dots={false}
-          autoplayHoverPause={true}
+          autoplayHoverPause
         >
           <Item />
           <Item />
