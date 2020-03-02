@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pabnainfo/static/css/main.d1b05096.chunk.css",
+    "main.js": "/pabnainfo/static/js/main.538cb25b.chunk.js",
+    "main.js.map": "/pabnainfo/static/js/main.538cb25b.chunk.js.map",
+    "runtime-main.js": "/pabnainfo/static/js/runtime-main.6ae4461e.js",
+    "runtime-main.js.map": "/pabnainfo/static/js/runtime-main.6ae4461e.js.map",
+    "static/css/2.31677d80.chunk.css": "/pabnainfo/static/css/2.31677d80.chunk.css",
+    "static/js/2.6172fd65.chunk.js": "/pabnainfo/static/js/2.6172fd65.chunk.js",
+    "static/js/2.6172fd65.chunk.js.map": "/pabnainfo/static/js/2.6172fd65.chunk.js.map",
+    "index.html": "/pabnainfo/index.html",
+    "precache-manifest.ae44b1a3dcb728a930e473eb209b4fc6.js": "/pabnainfo/precache-manifest.ae44b1a3dcb728a930e473eb209b4fc6.js",
+    "service-worker.js": "/pabnainfo/service-worker.js",
+    "static/css/2.31677d80.chunk.css.map": "/pabnainfo/static/css/2.31677d80.chunk.css.map",
+    "static/css/main.d1b05096.chunk.css.map": "/pabnainfo/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.6172fd65.chunk.js.LICENSE.txt": "/pabnainfo/static/js/2.6172fd65.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ae4461e.js",
+    "static/css/2.31677d80.chunk.css",
+    "static/js/2.6172fd65.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.538cb25b.chunk.js"
+  ]
+}
