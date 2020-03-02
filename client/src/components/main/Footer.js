@@ -98,8 +98,8 @@ const Cradit = () => {
         <Grid container justify="center">
           <Toolbar>
             <Typography>
-              Powerd By: 
-              <Link href="www.darunit.com">
+              Powerd By:  
+              <Link href="//www.darunit.com">
                 Darun IT
               </Link>
             </Typography>

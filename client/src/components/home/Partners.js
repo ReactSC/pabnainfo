@@ -24,7 +24,7 @@ const Partners = () => {
         <Grid container align='center' justify='center'>
         <OwlCarousel
           className="owl-theme"
-          items= { !sm ? 2 :!md ? 3 : 5 }
+          items= { !sm ? 2 :!md ? 4 : 6 }
           loop= {true}
           margin={10}
           center={false}
@@ -69,7 +69,7 @@ const Item = props => {
   return(
     <Grid item xs={4} sm={2} style={ style.grid }>
       <div>
-        <img style={style.avater} src="//upload.wikimedia.org/wikipedia/commons/thumb/2/23/OXO_logo.svg/1280px-OXO_logo.svg.png" />
+        <img style={style.avater} src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/OXO_logo.svg/1280px-OXO_logo.svg.png" alt="" />
       </div>
     </Grid>
   )
