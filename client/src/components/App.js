@@ -1,9 +1,17 @@
-import React, { useContext, Fragment } from 'react';
+import React, { Fragment } from 'react';
 // import { PabnainfoContext } from './store/Contexts';
-import Navbar from './main/Navbar';
-import Home from './pages/Home';
+import { Route, Switch } from 'react-router-dom';
 
+import Navbar from './main/Navbar';
 import Footer from './main/Footer';
+
+// import Pages
+import Home from './pages/Home';
+import ServiceProvider from './pages/ServiceProvider';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import FAQ from './pages/FAQ';
+
 
 import './App.css';
 
@@ -17,9 +25,16 @@ const App = () => {
   return (
     <Fragment>
       <Navbar />
-      <Home />
-      <Footer />
+      <Switch>
 
+      <Route path="/faq" component={ FAQ } />
+      <Route path="/contact" component={ Contact } />
+      <Route path="/about" component={ About } />
+      <Route path="/sp" component={ ServiceProvider } />
+      <Route path="/" exact component={ Home } />
+
+      </Switch>
+      <Footer />
         
 
         {/* <div className="container">

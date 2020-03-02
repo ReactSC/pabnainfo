@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, useTheme, useMediaQuery, useScrollTrigger, Slide, Container, IconButton } from '@material-ui/core';
 
 import SideDrawer from './SideDrawer';
+import BackToTop from '../ScrollTop';
 
 
-function HideOnScroll(props) {
+const HideOnScroll = props => {
   const { children, window } = props;
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
@@ -38,8 +40,15 @@ const Navbar = (props) => {
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const classes = useStyles();
 
+  const arr = [
+    {name: 'About', url:'/about'},
+    {name: 'Contact', url:'/contact'},
+    {name: 'FAQ', url:'/faq'},
+    {name: 'Worker', url:'/sp'}
+  ]
+
   return(
-    <div style={{marginBottom:50}}>
+    <div>
       <HideOnScroll {...props}>
         <AppBar position="fixed" color="primary">
           <Toolbar>
@@ -49,8 +58,18 @@ const Navbar = (props) => {
             </Typography>
             {md? (
               <Fragment>
-                {['Home','About','Contant','Doctors'].map((navitem, index)=>(
-                  <Button color="inherit" key={index}>{navitem}</Button>
+                <NavLink activeStyle={{borderBottom:'1px solid #fff'}} to="/" exact>
+                  <Button style={{color:'#fff'}} >
+                    Home
+                  </Button>
+                </NavLink>
+
+                {arr.map((navitem, index)=>(
+                  <NavLink activeStyle={{borderBottom:'1px solid #fff'}} to={navitem.url}>
+                    <Button style={{color:'#fff'}} key={index}>
+                      {navitem.name}
+                    </Button>
+                  </NavLink>
                 ))}
               </Fragment>
             ): <SideDrawer />
@@ -61,6 +80,7 @@ const Navbar = (props) => {
 
         </AppBar>
       </HideOnScroll>
+      <BackToTop />
     </div>
   )
 }
