@@ -9,6 +9,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 const Categories = () => {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
+  const sm = useMediaQuery(theme.breakpoints.up('sm'));
 
   return(
     <div style={{background:'#ffaacc'}}>
@@ -26,7 +27,7 @@ const Categories = () => {
         <Grid container align='center' justify='center'>
         <OwlCarousel
           className="owl-theme"
-          items= { !md ? 3 : 6 }
+          items= { !sm ? 3 :!md ? 4 : 6 }
           loop= {true}
           margin={10}
           center={false}
