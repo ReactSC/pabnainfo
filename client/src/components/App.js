@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-// import { PabnainfoContext } from './store/Contexts';
+import React, { Fragment, useContext } from 'react';
+import { PabnainfoContext } from './store/Contexts';
 import { Route, Switch } from 'react-router-dom';
 
 import Navbar from './main/Navbar';
@@ -19,10 +19,8 @@ import './App.css';
 
 
 const App = () => {
-  // const hello = useContext(PabnainfoContext);
-  // console.log(hello)
+  const context = useContext(PabnainfoContext);
   document.title='Pabna Info';
-  // const root = '/pabnainfo';
 
   return (
     <Fragment>
@@ -40,16 +38,6 @@ const App = () => {
       </Switch>
       <Footer />
         
-
-        {/* <div className="container">
-          <h1 className="display-4 text-light">Welcome</h1>
-          <div className="text-light">{hello.hei.map(h=>{
-            return(
-              <li className="list">{h}</li>
-              )
-            })}</div>
-          </div>
-      </div> */}
     </Fragment>
   );
 }

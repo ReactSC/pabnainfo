@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Chip, Paper } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
+
+import { PabnainfoContext } from '../store/Contexts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,26 +18,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MenuItems = () =>{
-  const classes = useStyles();
-  const [chipData, setChipData] = React.useState([
-    { key: 0, label: 'Home' },
-    { key: 1, label: 'About' },
-    { key: 2, label: 'FAQ' },
-    { key: 3, label: 'DashBoard' },
-    { key: 4, label: 'Contact' },
-    { key: 5, label: 'Add New' }
-  ]);
+  const contexts = useContext(PabnainfoContext);
+  const menuItems = contexts.menuItems;
 
-  const handleDelete = chipToDelete => () => {
-    setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key));
+  const classes = useStyles();
+  
+  const handleDelete = id => {
+    contexts.rmMenuItem(id)
   };
+
   const addNewHandle = () =>{
     alert('Add New')
   }
 
   return (
     <Paper className={classes.root}>
-      {chipData.map(data => {
+      {menuItems.map(data => {
         let icon;
 
         if (data.label === 'Add New') {
@@ -44,11 +42,11 @@ const MenuItems = () =>{
 
         return (
           <Chip
-            key={data.key}
+            key={data.id}
             icon={icon}
-            label={data.label}
-            onClick={data.label === 'Add New' ? addNewHandle : undefined }
-            onDelete={data.label === 'Add New' ? undefined : handleDelete(data)}
+            label={data.name}
+            onClick={data.name === 'Add New' ? addNewHandle : undefined }
+            onDelete={data.name === 'Add New' ? undefined : () => handleDelete(data.id)}
             className={classes.chip}
           />
         );

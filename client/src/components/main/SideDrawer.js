@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import React, { useContext, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { SwipeableDrawer, IconButton, List, Divider, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { Inbox, Mail, Menu } from '@material-ui/icons';
-
+import { SwipeableDrawer, IconButton, List, ListItem, ListItemText } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 import { NavLink } from 'react-router-dom';
 
-import { arr } from './Navbar';
+import { PabnainfoContext } from '../store/Contexts';
+
 
 const useStyles = makeStyles({
   list: {
@@ -19,14 +19,11 @@ const useStyles = makeStyles({
   },
 });
 
-const SideDrawer = props => {
+const SideDrawer = () => {
+  const menuItems = useContext(PabnainfoContext).menuItems;
+
   const classes = useStyles();
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [state, setState] = useState({right: false});
 
   const toggleDrawer = (side, open) => event => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -50,10 +47,10 @@ const SideDrawer = props => {
           </ListItem>
         </NavLink>
 
-        {arr.map((navItem, index) => (
-            <NavLink key={index} to={navItem.url}>
+        {menuItems.map( menu => (
+            <NavLink key={ menu.id } to={ menu.url }>
               <ListItem button> 
-                <ListItemText primary={navItem.name} />
+                <ListItemText primary={ menu.name } />
               </ListItem>
             </NavLink>
         ))}

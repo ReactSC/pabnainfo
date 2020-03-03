@@ -38,11 +38,3 @@ const Hero = () => {
 }
 
 export default Hero;
-
-const TagButton = props => {
-  return (
-    <Button className="ml-2" variant="contained" color="default" style={{marginTop:25}}>
-      {props.value}
-    </Button>
-  )
-}

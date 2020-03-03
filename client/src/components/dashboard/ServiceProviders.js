@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, List, ListItem, ListItemIcon, ListItemAvatar, ListItemText, Toolbar, Avatar, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography } from '@material-ui/core';
+import { Paper, List, ListItem, ListItemAvatar, ListItemText, Toolbar, Avatar, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 
-import Actions from './Actions';
+// import Actions from './Actions';
 
 // custome StyleSheet
 const useStyles = makeStyles(theme => ({
@@ -26,8 +26,9 @@ const useStyles = makeStyles(theme => ({
 
 
 // Single Lsit Service Provider
-export const SingleList1 = () => {
+export const SingleList1 = props => {
 
+const{ name, role, avater  } = props;
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -47,15 +48,15 @@ export const SingleList1 = () => {
       <Paper>
         <ListItem button onClick={handleClick}>
           <ListItemAvatar>
-            <Avatar src="http://darunit.com/eop/images/1.jpg" />
+            <Avatar src={ avater } alt={ name } />
           </ListItemAvatar>
           <ListItemText
             primary={(
               <Fragment>
-                Sofiqul Islam
+                { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    Doctor
+                    { role }
                   </Typography>
                 </Toolbar>
               </Fragment>

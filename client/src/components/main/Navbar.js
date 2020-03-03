@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Button, useTheme, useMediaQuery, useScrollTrigger, Slide, Container, IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, useTheme, useMediaQuery, useScrollTrigger, Slide } from '@material-ui/core';
 
 import SideDrawer from './SideDrawer';
 import BackToTop from '../ScrollTop';
+import { PabnainfoContext } from '../store/Contexts';
 
 
 const HideOnScroll = props => {
@@ -18,7 +19,7 @@ const HideOnScroll = props => {
   );
 }
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -35,7 +36,9 @@ const useStyles = makeStyles(theme =>
 );
 
 
-const Navbar = (props) => {
+const Navbar = props => {
+  const menuItems = useContext(PabnainfoContext).menuItems;
+
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const classes = useStyles();
@@ -58,10 +61,10 @@ const Navbar = (props) => {
                   </Button>
                 </NavLink>
 
-                {arr.map((navitem, index)=>(
-                  <NavLink activeStyle={{borderBottom:'1px solid #fff'}} to={navitem.url}>
-                    <Button style={{color:'#fff'}} key={index}>
-                      {navitem.name}
+                {menuItems.map( menu =>(
+                  <NavLink activeStyle={{borderBottom:'1px solid #fff'}} to={ menu.url }  key={menu.id}>
+                    <Button style={{color:'#fff'}}>
+                      { menu.name }
                     </Button>
                   </NavLink>
                 ))}
@@ -79,11 +82,3 @@ const Navbar = (props) => {
   )
 }
 export default Navbar;
-
-export const arr = [
-  {name: 'About', url:'/about'},
-  {name: 'Contact', url:'/contact'},
-  {name: 'FAQ', url:'/faq'},
-  {name: 'Worker', url:'/sp'},
-  {name: 'DashBoard', url:'/dashboard'}
-]

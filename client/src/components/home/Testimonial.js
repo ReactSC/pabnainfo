@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Container, Grid, Typography, IconButton, Button, Toolbar } from '@material-ui/core';
+import { Container, Grid, Typography, IconButton, Button} from '@material-ui/core';
 import { ChevronLeft, ArrowRightAlt } from '@material-ui/icons';
 
 import OwlCarousel from 'react-owl-carousel';

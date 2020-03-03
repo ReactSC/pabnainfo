@@ -1,5 +1,4 @@
-import React, { useContext, Fragment } from 'react';
-// import { PabnainfoContext } from './store/Contexts';
+import React, { Fragment } from 'react';
 import Hero from '../home/Hero';
 import Categories from '../home/Categories';
 import CardSection from '../home/CardSection';

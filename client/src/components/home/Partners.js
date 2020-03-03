@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Grid, Toolbar, useMediaQuery,useTheme, Typography, Button } from '@material-ui/core';
+import { Container, Grid, Toolbar, useMediaQuery,useTheme, Typography } from '@material-ui/core';
 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';

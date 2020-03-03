@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Container } from '@material-ui/core';
-import Contact from './Contact';
+// import Contact from './Contact';
 
 
 const ServiceProvider = () => {

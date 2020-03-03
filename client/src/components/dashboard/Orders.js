@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, Paper, ListItem, Avatar, ListItemIcon, ListItemText, Collapse, Typography, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
-import { ExpandLess, ExpandMore, MoreVert  } from '@material-ui/icons';
+import { List, Paper, ListItem, Avatar, ListItemIcon, ListItemText, Collapse, Typography, Toolbar } from '@material-ui/core';
+import { ExpandLess, ExpandMore  } from '@material-ui/icons';
 
 import Actions from './Actions';
 

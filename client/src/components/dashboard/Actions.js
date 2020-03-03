@@ -11,7 +11,6 @@ import { MoreVert } from '@material-ui/icons';
 // ];
 
 const Actions = props => {
-  console.log(props)
   const [anchorEl, setAnchorEl] = useState(null);
   const [options, setOptions] = useState('')
   const open = Boolean(anchorEl);
@@ -22,7 +21,7 @@ const Actions = props => {
 
   const handleClose = (option) => {
     if(typeof(option)==='string') {
-      alert(`You Selected ${option}`)
+      alert(`You Selected ${options}`)
       setOptions(option)
     }
     setAnchorEl(null);

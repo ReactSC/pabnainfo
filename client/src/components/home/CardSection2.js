@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Avatar, Toolbar, useMediaQuery,useTheme, Typography, Button, IconButton } from '@material-ui/core';
+import { Container, Grid, Toolbar, useMediaQuery,useTheme, Typography, Button, IconButton } from '@material-ui/core';
 import { ChevronLeft, ArrowRightAlt } from '@material-ui/icons';
 
 import CardItem from '../cardItem'
