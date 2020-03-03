@@ -25,7 +25,7 @@ const Categories = () =>{
 
 
   const handleDelete = id => {
-    contexts.rmCategories(id)
+    contexts.rmCategory(id)
   };
 
   const addNewHandle = () =>{

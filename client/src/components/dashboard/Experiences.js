@@ -23,7 +23,7 @@ const Experiences = () =>{
   const classes = useStyles();
 
   const handleDelete = id => {
-    contexts.rmExperiences(id)
+    contexts.rmExperience(id)
   };
 
   const addNewHandle = () =>{

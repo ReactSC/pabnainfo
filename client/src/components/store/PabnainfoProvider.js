@@ -48,7 +48,7 @@ const Provider=(props)=> {
     setData({...data ,menuItems:newData});
   }
 
-  const rmCategorie = (id) => {
+  const rmCategory = (id) => {
     const newData = data.categories.filter(categories=> id !== categories.id)
     setData({...data ,categories:newData});
   }
@@ -65,7 +65,7 @@ const Provider=(props)=> {
     users: data.users,
 
     categories: data.categories,
-    rmCategorie,
+    rmCategory,
 
     experiences: data.experiences,
     rmExperience,

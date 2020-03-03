@@ -45,12 +45,16 @@ const MenuItems = () =>{
             key={data.id}
             icon={icon}
             label={data.name}
-            onClick={data.name === 'Add New' ? addNewHandle : undefined }
-            onDelete={data.name === 'Add New' ? undefined : () => handleDelete(data.id)}
+            onDelete={ () => handleDelete(data.id)}
             className={classes.chip}
           />
         );
       })}
+      <Chip
+        icon={<Add />}
+        label = "Add New"
+        onClick={ addNewHandle }
+        className={classes.chip} />
     </Paper>
   );
 }
