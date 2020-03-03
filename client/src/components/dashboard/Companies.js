@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
-// import { Container } from '@material-ui/core';
 
+import { SingleList1 } from './ServiceProviders';
+
+// Final Render
 const Companies = () => {
-
   return(
     <Fragment>
-      <h1>Companies</h1>
+      <SingleList1 />
+      <SingleList1 />
+      <SingleList1 />
+      <SingleList1 />
     </Fragment>
   )
 }

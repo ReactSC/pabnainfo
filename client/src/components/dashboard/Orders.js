@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, Paper, ListItem, Avatar, ListItemIcon, ListItemText, Collapse, Typography, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { ExpandLess, ExpandMore, MoreVert  } from '@material-ui/icons';
 
+import Actions from './Actions';
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -16,6 +18,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomList = () => {
+  const option = {
+    data: [
+    'Full View',
+    'Pending',
+    'Confirm',
+    'See Ticket',
+    'Delete'
+  ]
+};
+
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -31,7 +44,7 @@ const CustomList = () => {
       <Paper>
         <ListItem button onClick={handleClick}>
           <ListItemIcon>
-            <ActionBtn />
+            <Actions {...option} />
           </ListItemIcon>
           <ListItemText
             primary={(
@@ -67,61 +80,7 @@ const CustomList = () => {
 }
 
 
-const option = [
-  'Pending',
-  'Confirm',
-  'See Ticket',
-  'Delete'
-];
 
-const ActionBtn = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [options, setOptions] = useState('')
-  const open = Boolean(anchorEl);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (option) => {
-    if(typeof(option)==='string') {
-      alert(`You Selected ${option}`)
-      setOptions(option)
-    }
-    setAnchorEl(null);
-  };
-
-  return (
-    <div>
-      <IconButton
-        aria-label="more"
-        aria-controls="long-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <MoreVert />
-      </IconButton>
-      <Menu
-        id="long-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            width: 150,
-          },
-        }}
-      >
-        {option.map((option, index) => (
-          <MenuItem key={index} onClick={()=>handleClose(option)}>
-            <span>{option}</span>
-          </MenuItem>
-        ))}
-      </Menu>
-    </div>
-  );
-}
 
 // Final Render
 const Orders = () => {

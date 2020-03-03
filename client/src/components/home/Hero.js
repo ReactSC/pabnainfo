@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid, Button, Typography, Paper, TextField, IconButton, Toolbar } from '@material-ui/core';
-import { Search } from '@material-ui/icons'
+import { Container, Grid, Button, Typography } from '@material-ui/core';
+
 
 import './Hero';
 
