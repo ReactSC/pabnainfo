@@ -18,11 +18,12 @@ const Provider=(props)=> {
     {id:3, name:'Samrat Nasir',role:'Member',avater:'//darunit.com/eop/images/3.jpg', about:'About text for Samrat Nasir'},
   ]
   const categories = [
-    { id: 1, label: 'Doctors' },
+    { id: 1, label: 'Doctor' },
     { id: 2, label: 'Ret-A-car' },
-    { id: 3, label: 'Holeseller' },
-    { id: 4, label: 'Pipe Line Cleaner' },
-    { id: 5, label: 'Developer' }
+    { id: 3, label: 'Programmer' },
+    { id: 4, label: 'Holeseller' },
+    { id: 5, label: 'Pipe Line Cleaner' },
+    { id: 6, label: 'Developer' }
   ]
 
   const experiences = [
