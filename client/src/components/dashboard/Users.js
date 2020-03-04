@@ -15,6 +15,7 @@ const Users = () => {
           name      = { user.name }
           role      = { user.role }
           avater    = { user.avater }
+          about     = { user.about }
         />
       ))}
     </Fragment>

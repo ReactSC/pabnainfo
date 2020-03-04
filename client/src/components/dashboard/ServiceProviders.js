@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, List, ListItem, ListItemAvatar, ListItemText, Toolbar, Avatar, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import { PabnainfoContext } from '../store/Contexts';
 
 // import Actions from './Actions';
 
@@ -28,7 +29,8 @@ const useStyles = makeStyles(theme => ({
 // Single Lsit Service Provider
 export const SingleList1 = props => {
 
-const{ name, role, avater  } = props;
+const{ name, catagory, skill, degree, avater } = props;
+
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -56,31 +58,31 @@ const{ name, role, avater  } = props;
                 { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    { role }
+                    { props.role? props.role :catagory }
                   </Typography>
                 </Toolbar>
               </Fragment>
             )}
-            secondary="Consequat aliquip ea voluptate elitea voluptate elit" />
+            secondary={props.about? props.about:`${skill} - ${degree}`} />
 
         </ListItem>
 
 {/* Dialog */}
         <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Dr Mujibur Rahman
+          { name }
           <IconButton onClick={handleClose} className={ classes.closeButton }>
             <Close />
           </IconButton>
 
           <Toolbar style={{padding:0,minHeight:0}}>
             <Typography variant="body1" className="mr-2" color="textPrimary">
-              Doctor
+              { props.role? props.role :catagory }
             </Typography>
           </Toolbar>
           <Toolbar style={{padding:0,minHeight:0}}>
           <Typography variant="body2" className="mr-2" color="textPrimary">
-              Magna est ipsum exercitation fugiat exercitation
+            {props.about? props.about:`${skill} - ${degree}`}
             </Typography>
           </Toolbar>
         </DialogTitle>
@@ -109,15 +111,22 @@ const{ name, role, avater  } = props;
   );
 }
 
-
 // Final Render
 const ServiceProviders = () => {
+  const context = useContext(PabnainfoContext);
+  const serviceProviders = context.serviceProviders;
   return(
     <Fragment>
-      <SingleList1 />
-      <SingleList1 />
-      <SingleList1 />
-      <SingleList1 />
+      {serviceProviders.map(sp =>(
+        <SingleList1
+          key         = {sp.id}
+          name        = {sp.name}
+          catagory    = {sp.catagory}
+          skill       = {sp.skill}
+          degree      = {sp.degree}
+          avater      = {sp.avater}
+        />
+      ))}
     </Fragment>
   )
 }

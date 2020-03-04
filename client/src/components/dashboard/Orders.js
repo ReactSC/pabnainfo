@@ -1,8 +1,9 @@
-import React, { Fragment} from 'react';
+import React, { Fragment, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, Paper, ListItem, Avatar, ListItemIcon, ListItemText, Collapse, Typography, Toolbar } from '@material-ui/core';
 import { ExpandLess, ExpandMore  } from '@material-ui/icons';
 
+import { PabnainfoContext } from '../store/Contexts';
 import Actions from './Actions';
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +18,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CustomList = () => {
+const CustomList = props => {
+  const { id, name, task, mobileNo, location, spID, status } = props;
+  const context = useContext(PabnainfoContext);
+  const serviceProviders = context.serviceProviders;
+  
+  // Filter A single Service Provider by Order ID
+  const sp = id => serviceProviders.filter(sp => sp.id === id)
+
+
   const option = {
     data: [
     'Full View',
@@ -49,28 +58,29 @@ const CustomList = () => {
           <ListItemText
             primary={(
               <Fragment>
-                Sofiqul Islam
+                { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    225154
+                    { id }
                   </Typography>
                   <Typography variant="body2" color="error">
-                    Pending
+                    { status }
                   </Typography>
                 </Toolbar>
               </Fragment>
             )}
-            secondary="Consequat aliquip ea voluptate elitea voluptate elit" />
+            secondary={`${task} - ${mobileNo} - ${location}`} />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
+
             <ListItem button className={classes.nested}>
               <ListItemIcon>
-                <Avatar />
+                <Avatar src={sp( spID)[0].avater } alt={ sp(spID)[0].name } />
               </ListItemIcon>
-              <ListItemText primary="Dr. Mojubur Rahman"
-            secondary="Consequat aliquip ea voluptate elit"  />
+              <ListItemText primary={ sp(spID)[0].name }
+            secondary={`${sp(spID)[0].skill}- ${sp(spID)[0].degree}`} />
             </ListItem>
           </List>
         </Collapse>
@@ -84,13 +94,23 @@ const CustomList = () => {
 
 // Final Render
 const Orders = () => {
+  const context = useContext(PabnainfoContext);
+  const orders = context.orders;
 
   return (
     <Fragment>
-      <CustomList />
-      <CustomList />
-      <CustomList />
-      <CustomList />
+      {orders.map(order=>(
+        <CustomList
+          key = {order.id}
+          id = {order.id}
+          name = {order.name}
+          task = {order.task}
+          mobileNo = {order.mobile}
+          status= {order.status}
+          location = {order.location}
+          spID= {order.spID}
+        />
+      ))}
     </Fragment>
   )
 }
