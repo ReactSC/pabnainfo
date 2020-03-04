@@ -58,7 +58,7 @@ const{ name, catagory, skill, degree, avater } = props;
                 { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    { props.role? props.role :catagory }
+                    { props.role? props.role : props.location? props.location : catagory }
                   </Typography>
                 </Toolbar>
               </Fragment>
@@ -77,7 +77,7 @@ const{ name, catagory, skill, degree, avater } = props;
 
           <Toolbar style={{padding:0,minHeight:0}}>
             <Typography variant="body1" className="mr-2" color="textPrimary">
-              { props.role? props.role :catagory }
+              { props.role? props.role : props.location? props.location :catagory }
             </Typography>
           </Toolbar>
           <Toolbar style={{padding:0,minHeight:0}}>

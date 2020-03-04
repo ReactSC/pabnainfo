@@ -46,6 +46,11 @@ const Provider=(props)=> {
     {id:2, name:'Dr. Jubaer Ahmad', catagory:'Programmer', skill:'Brain', degree:'React JS',avater:'//darunit.com/eop/images/2.jpg'},
     {id:3, name:'Dr. Nirob Hasan', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/9.jpg'}
   ]
+
+  const companies = [
+    {id:1, name:'Pabna Genaral Hospital', location:'Pabna Sadar', about:'Sort Discription of Pabna Genaral Hospital.', avater:'avater'},
+    {id:1, name:'Darun IT', location:'Pabna Sadar', about:'Sort Discription of Darun IT', avater:'avater2'}
+  ]
   
   const [data, setData] = useState({
     menuItems,
@@ -54,6 +59,7 @@ const Provider=(props)=> {
     experiences,
     orders,
     serviceProviders,
+    companies,
   })
   
 
@@ -88,6 +94,7 @@ const Provider=(props)=> {
     orders: data.orders,
 
     serviceProviders: data.serviceProviders,
+    companies: data.companies
 
     
   }
