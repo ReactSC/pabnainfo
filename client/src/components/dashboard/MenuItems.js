@@ -34,16 +34,9 @@ const MenuItems = () =>{
   return (
     <Paper className={classes.root}>
       {menuItems.map(data => {
-        let icon;
-
-        if (data.label === 'Add New') {
-          icon = <Add />;
-        }
-
         return (
           <Chip
             key={data.id}
-            icon={icon}
             label={data.name}
             onDelete={ () => handleDelete(data.id)}
             className={classes.chip}

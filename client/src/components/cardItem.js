@@ -20,7 +20,7 @@ const {name, avater, about} = props;
             { name }
           </Typography>
           <Typography component="p">
-            { about.slice(0, 75) }
+            { about.slice(0, 60) }
           </Typography>
         </CardContent>
 

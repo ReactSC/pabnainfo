@@ -33,23 +33,20 @@ const Experiences = () =>{
   return (
     <Paper className={classes.root}>
       {experiences.map(data => {
-        let icon;
-
-        if (data.label === 'Add New') {
-          icon = <Add />;
-        }
-
         return (
           <Chip
             key={data.id}
-            icon={icon}
             label={data.label}
-            onClick={data.label === 'Add New' ? addNewHandle : undefined }
-            onDelete={data.label === 'Add New' ? undefined : () => handleDelete(data.id)}
+            onDelete={() => handleDelete(data.id)}
             className={classes.chip}
           />
         );
       })}
+      <Chip
+        icon={<Add />}
+        label = "Add New"
+        onClick={ addNewHandle }
+        className={classes.chip} />
     </Paper>
   );
 }

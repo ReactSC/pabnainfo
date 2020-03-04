@@ -22,8 +22,7 @@ const Provider=(props)=> {
     { id: 2, label: 'Ret-A-car' },
     { id: 3, label: 'Holeseller' },
     { id: 4, label: 'Pipe Line Cleaner' },
-    { id: 5, label: 'Developer' },
-    { id: 6, label: 'Add New' }
+    { id: 5, label: 'Developer' }
   ]
 
   const experiences = [
@@ -31,8 +30,7 @@ const Provider=(props)=> {
     { id: 1, label: 'Experiences Two' },
     { id: 2, label: 'Experiences three' },
     { id: 3, label: 'Experiences Four' },
-    { id: 4, label: 'Experiences Five' },
-    { id: 5, label: 'Add New' },
+    { id: 4, label: 'Experiences Five' }
   ]
 
 

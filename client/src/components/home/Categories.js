@@ -1,15 +1,34 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 
 import { Container, Grid, Avatar, Toolbar, useMediaQuery,useTheme, Typography, Button } from '@material-ui/core';
 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { PabnainfoContext } from '../store/Contexts';
 
 const Categories = () => {
+  const context = useContext(PabnainfoContext);
+  const categories = context.categories;
+
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const style={
+    grid: {
+      maxWidth: '100%',
+      margin:'15px auto'
+    },
+    avater: {
+    width: 100,
+    height: 100,
+    background: '#3F51B5',
+    fontSize: '50px',
+    boxShadow: '0px 0px 5px #000000aa',
+    border: '3px solid #fff'
+    }
+  }
 
   return(
     <div style={{background:'#ffaacc'}}>
@@ -36,12 +55,16 @@ const Categories = () => {
           dots={false}
           autoplayHoverPause
         >
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {categories.map(category => (
+            <Grid key={ category.id } item xs={4} sm={2} style={ style.grid }>
+              <div>
+                <Avatar alt={category.label} src="http" style={ style.avater } />
+                <Typography variant="body1" className="mt-3">
+                  { category.label }
+                </Typography>
+              </div>
+            </Grid>
+          ))}
         </OwlCarousel>
 
         </Grid>
@@ -51,29 +74,3 @@ const Categories = () => {
 }
 
 export default Categories;
-
-const Item = () => {
-
-  const style={
-    grid: {
-      maxWidth: '100%',
-      margin:'15px auto'
-    },
-    avater: {
-    width: 100,
-    height: 100,
-    boxShadow: '0px 0px 5px #000000aa',
-    border: '3px solid #fff'
-    }
-  }
-  return(
-    <Grid item xs={4} sm={2} style={ style.grid }>
-      <div>
-        <Avatar alt="Remy Sharp" src="http://darunit.com/eop/images/1.jpg" style={ style.avater } />
-        <Typography variant="body1" className="mt-3">
-          Sofiqul Islam
-        </Typography>
-      </div>
-    </Grid>
-  )
-}
