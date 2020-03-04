@@ -23,9 +23,8 @@ const serviceProviders = context.serviceProviders;
 
         <Grid container>
           {serviceProviders.map(sp => (
-            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={{margin:'0 auto',padding:5}}>
-              <CardItem 
-                key       = {sp.id}
+            <Grid key= {sp.id} item xs={12} sm={6} md={4} lg={4} xl={3} style={{margin:'0 auto',padding:5}}>
+              <CardItem
                 name      = {sp.name}
                 avater    = {sp.avater}
                 about     = {sp.about}

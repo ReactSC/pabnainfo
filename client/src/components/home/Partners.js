@@ -54,7 +54,7 @@ const Partners = () => {
           autoplayHoverPause={true}
         >
           {partners.map(partner => (
-            <Grid item xs={4} sm={2} style={ style.grid }>
+            <Grid key= {partner.id} item xs={4} sm={2} style={ style.grid }>
               <Link href={ '//'+partner.url } >
                 <img
                   style={style.avater}

@@ -55,10 +55,9 @@ const CardSection2 = () => {
           dots={false}
         >
           {serviceProviders.map(sp => (
-            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid } >
+            <Grid key= {sp.id} item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid } >
               <CardItem
                 style={style.avater}
-                key       = {sp.id}
                 name      = {sp.name}
                 avater    = {sp.avater}
                 about     = {sp.about}
