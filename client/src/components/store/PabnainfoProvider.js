@@ -42,9 +42,9 @@ const Provider=(props)=> {
   ]
 
   const serviceProviders = [
-    {id:1, name:'Dr. Mujibur Rahman', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/1.jpg'},
-    {id:2, name:'Dr. Jubaer Ahmad', catagory:'Programmer', skill:'Brain', degree:'React JS',avater:'//darunit.com/eop/images/2.jpg'},
-    {id:3, name:'Dr. Nirob Hasan', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/9.jpg'}
+    {id:1, name:'Dr. Mujibur Rahman', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/1.jpg',about:'About is Nisi et exercitation enim occaecat laborum.'},
+    {id:2, name:'Dr. Jubaer Ahmad', catagory:'Programmer', skill:'Brain', degree:'React JS',avater:'//darunit.com/eop/images/2.jpg',about:'About is Tempor nulla culpa sint Lorem nisi voluptate laborum ullamco anim nostrud id laboris tempor elit.'},
+    {id:3, name:'Dr. Nirob Hasan', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/9.jpg',about:'About is Eu consequat duis ipsum qui minim excepteur.'}
   ]
 
   const companies = [
@@ -52,6 +52,14 @@ const Provider=(props)=> {
     {id:1, name:'Darun IT', location:'Pabna Sadar', about:'Sort Discription of Darun IT', avater:'avater2'}
   ]
   
+  const partners = [
+    {id:1, name:'Darun IT', url:'www.darunit.com', logo:'https://i.ibb.co/njZs1cF/logo-square.png'},
+    {id:2, name:'Google', url:'www.google.com', logo:'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'},
+    {id:3, name:'Intel LLC', url:'www.intel.com', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/165px-Intel-logo.svg.png'},
+  ]
+
+
+
   const [data, setData] = useState({
     menuItems,
     users,
@@ -60,6 +68,7 @@ const Provider=(props)=> {
     orders,
     serviceProviders,
     companies,
+    partners,
   })
   
 
@@ -92,9 +101,9 @@ const Provider=(props)=> {
     rmExperience,
 
     orders: data.orders,
-
     serviceProviders: data.serviceProviders,
-    companies: data.companies
+    companies: data.companies,
+    partners: data.partners,
 
     
   }

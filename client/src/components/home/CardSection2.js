@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { Container, Grid, Toolbar, useMediaQuery,useTheme, Typography, Button, IconButton } from '@material-ui/core';
 import { ChevronLeft, ArrowRightAlt } from '@material-ui/icons';
 
@@ -7,12 +7,29 @@ import CardItem from '../cardItem'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'
+import { PabnainfoContext } from '../store/Contexts';
 
 const CardSection2 = () => {
+  const context = useContext(PabnainfoContext);
+  const serviceProviders = context.serviceProviders;
+
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
   const sm = useMediaQuery(theme.breakpoints.up('sm'));
   const xs = useMediaQuery(theme.breakpoints.up('xs'));
+
+  const style={
+    grid: {
+      maxWidth: '100%',
+      margin:'15px auto',
+      padding: '10px'
+    },
+    avater: {
+    width: '100%',
+    boxShadow: '0px 0px 5px #000000aa',
+    border: '3px solid #fff'
+    }
+  }
 
   return(
     <div>
@@ -37,12 +54,17 @@ const CardSection2 = () => {
           autoPlay
           dots={false}
         >
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {serviceProviders.map(sp => (
+            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid } >
+              <CardItem
+                style={style.avater}
+                key       = {sp.id}
+                name      = {sp.name}
+                avater    = {sp.avater}
+                about     = {sp.about}
+              />
+            </Grid>
+          ))}
           
         </OwlCarousel>
 
@@ -63,26 +85,3 @@ const CardSection2 = () => {
 }
 
 export default CardSection2;
-
-const Item = () => {
-
-  const style={
-    grid: {
-      maxWidth: '100%',
-      margin:'15px auto',
-      padding: '10px'
-    },
-    avater: {
-    width: '100%',
-    boxShadow: '0px 0px 5px #000000aa',
-    border: '3px solid #fff'
-    }
-  }
-  return (
-    <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid } >
-      <div>
-        <CardItem style={style.avater} />
-      </div>
-    </Grid>
-  )
-}

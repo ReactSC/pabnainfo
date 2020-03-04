@@ -1,9 +1,12 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 
 import { Grid, Container, Typography, Toolbar, Button } from '@material-ui/core';
+import { PabnainfoContext } from '../store/Contexts';
 import CardItem from '../cardItem';
 
 const CardSection = () => {
+const context = useContext(PabnainfoContext);
+const serviceProviders = context.serviceProviders;
 
   return(
     <div>
@@ -19,10 +22,16 @@ const CardSection = () => {
         </Toolbar>
 
         <Grid container>
-          <CardItems />
-          <CardItems />
-          <CardItems />
-
+          {serviceProviders.map(sp => (
+            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={{margin:'0 auto',padding:5}}>
+              <CardItem 
+                key       = {sp.id}
+                name      = {sp.name}
+                avater    = {sp.avater}
+                about     = {sp.about}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Container>
 
@@ -32,11 +41,3 @@ const CardSection = () => {
 }
 
 export default CardSection;
-
-const CardItems = () => {
-  return (
-    <Grid item xs={12} sm={6} md={4} lg={4} xl={3} style={{margin:'0 auto',padding:5}}>
-      <CardItem />
-    </Grid>
-  )
-}

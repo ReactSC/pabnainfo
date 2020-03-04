@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 
 const CardItem = props => {
+const {name, avater, about} = props;
 
   return(
     <div>
@@ -10,17 +11,16 @@ const CardItem = props => {
         {/* Card Thumnails */}
         <CardMedia
           style={{height: 0, paddingTop: '56.25%'}}
-          image="http://darunit.com/eop/images/1.jpg" />
+          image={ avater } />
 
 
         {/* Card Contents */}
         <CardContent>
           <Typography variant="h5" gutterBottom>
-            Sofiqul Islam is a 
-            Good Devloper
+            { name }
           </Typography>
           <Typography component="p">
-            The current course is handed over to this component via the course parameter.
+            { about.slice(0, 75) }
           </Typography>
         </CardContent>
 
