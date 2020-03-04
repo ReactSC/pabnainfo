@@ -7,9 +7,10 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import Provider from './components/store/PabnainfoProvider';
+import { basePath } from './config';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename={basePath} >
     <Provider>
       <App />
     </Provider>

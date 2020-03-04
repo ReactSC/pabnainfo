@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Chip  } from '@material-ui/core';
+import { Container, Chip, Typography  } from '@material-ui/core';
 import { SingleList1 } from '../dashboard/ServiceProviders';
 import { PabnainfoContext } from '../store/Contexts';
 
@@ -58,7 +58,7 @@ const ServiceProvider = () => {
             className={ cat === category.label ? classes.active : classes.chip } />
         ))}
 
-          {sp ? sp.map(sp =>(
+          {sp.length >0 ? sp.map(sp =>(
             <SingleList1
               key         = {sp.id}
               name        = {sp.name}
@@ -67,7 +67,7 @@ const ServiceProvider = () => {
               degree      = {sp.degree}
               avater      = {sp.avater}
             />
-          )): "No Service Provider"}
+          )): <Typography className="text-center" variant="h6" color="error">No Service Provider has been Found!</Typography>}
       </Container>
     </Fragment>
   )
