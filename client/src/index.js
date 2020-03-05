@@ -8,9 +8,11 @@ import * as serviceWorker from './serviceWorker';
 
 import Provider from './components/store/PabnainfoProvider';
 import { basePath } from './config';
+import ScrollToTop from './components/ScrollToTop'
 
 ReactDOM.render(
   <BrowserRouter basename={basePath} >
+    <ScrollToTop />
     <Provider>
       <App />
     </Provider>

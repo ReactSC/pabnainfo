@@ -18,12 +18,12 @@ const Provider=(props)=> {
     {id:3, name:'Samrat Nasir',role:'Member',avater:'//darunit.com/eop/images/3.jpg', about:'About text for Samrat Nasir'},
   ]
   const categories = [
-    { id: 1, label: 'Doctor' },
-    { id: 2, label: 'Ret-A-car' },
-    { id: 3, label: 'Programmer' },
-    { id: 4, label: 'Holeseller' },
-    { id: 5, label: 'Pipe Line Cleaner' },
-    { id: 6, label: 'Developer' }
+    { id: 1, label: 'Doctor', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+    { id: 2, label: 'Ret-A-car', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+    { id: 3, label: 'Programmer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+    { id: 4, label: 'Holeseller', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+    { id: 5, label: 'Pipe Line Cleaner', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+    { id: 6, label: 'Developer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' }
   ]
 
   const experiences = [
@@ -57,6 +57,10 @@ const Provider=(props)=> {
     {id:3, name:'Intel LLC', url:'www.intel.com', logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/165px-Intel-logo.svg.png'},
   ]
 
+  const session = {
+    selectCat: 'All',
+    selectSP: 1,
+  }
 
 
   const [data, setData] = useState({
@@ -68,6 +72,7 @@ const Provider=(props)=> {
     serviceProviders,
     companies,
     partners,
+    session,
   })
   
 
@@ -87,6 +92,14 @@ const Provider=(props)=> {
     setData({...data ,experiences:newData});
   }
 
+  const addOrder = (value) => {
+    
+  }
+
+  const setSession = (key, value) => {
+    setData({...data, session:{...data.session, [key]:value}})
+  }
+
   const access = {
     menuItems: data.menuItems,
     rmMenuItem,
@@ -104,7 +117,8 @@ const Provider=(props)=> {
     companies: data.companies,
     partners: data.partners,
 
-    
+    session: data.session,
+    setSession,
   }
 
   return(

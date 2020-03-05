@@ -11,7 +11,10 @@ import ServiceProvider from './pages/ServiceProvider';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
-import DashBoard from './pages/Dashboard'
+import DashBoard from './pages/Dashboard';
+import Categories from './pages/Categories';
+import Order from './pages/Order';
+import NotFound from './NotFound';
 
 
 import './App.css';
@@ -27,13 +30,15 @@ const App = () => {
       <Navbar />
       <Switch>
 
+      <Route path="/categories" component={ Categories } />
       <Route path="/dashboard" component={ DashBoard } />
       <Route path="/faq" component={ FAQ } />
       <Route path="/contact" component={ Contact } />
       <Route path="/about" component={ About } />
+      <Route path="/order" component={ Order } />
       <Route path="/sp" component={ ServiceProvider } />
       <Route path="/" exact component={ Home } />
-      {/* <Route component={ Home } /> */}
+      <Route component={ NotFound } />
 
       </Switch>
       <Footer />
@@ -43,3 +48,4 @@ const App = () => {
 }
 
 export default App;
+

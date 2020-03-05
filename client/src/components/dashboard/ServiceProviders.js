@@ -41,6 +41,9 @@ const{ name, catagory, skill, degree, avater } = props;
   const handleClose = () => {
     setOpen(false);
   }
+  const handleOrder = () => {
+    setOpen(false);
+  }
 
   return (
     <List
@@ -87,7 +90,7 @@ const{ name, catagory, skill, degree, avater } = props;
           </Toolbar>
         </DialogTitle>
 
-        <DialogContent dividers>
+        <DialogContent>
           <Typography gutterBottom>
             Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
             scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
@@ -95,13 +98,16 @@ const{ name, catagory, skill, degree, avater } = props;
           </Typography>
         </DialogContent>
 
-        <DialogActions dividers>
-          <Button variant="outlined" onClick={handleClose} color="primary">
+        <DialogActions>
+          <Button variant="outlined" onClick={handleOrder} color="primary">
+            Get Service
+          </Button>
+          {/* <Button variant="outlined" onClick={handleClose} color="primary">
             Verify
           </Button>
           <Button variant="outlined" onClick={handleClose} color="secondary">
             Delete
-          </Button>
+          </Button> */}
         </DialogActions>
       </Dialog>
         

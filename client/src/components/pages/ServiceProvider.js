@@ -1,21 +1,16 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Chip, Typography  } from '@material-ui/core';
 import { SingleList1 } from '../dashboard/ServiceProviders';
 import { PabnainfoContext } from '../store/Contexts';
 
 
-// import { makeStyles } from '@material-ui/core/styles';
-// import { Chip, Paper } from '@material-ui/core';
-// import { Add } from '@material-ui/icons';
-
-
-const ServiceProvider = () => {
+const ServiceProvider = props => {
   const contexts = useContext(PabnainfoContext);
   const serviceProviders = contexts.serviceProviders;
   const categories = contexts.categories;
+  const session = contexts.session;
 
-  const[cat, setCat] = useState('All');
 
   // JSS CODE
   const useStyles = makeStyles(theme => ({
@@ -30,15 +25,14 @@ const ServiceProvider = () => {
   }));
   const classes = useStyles();
 
-  const addNewHandle = label => {
-    setCat(label)
+  const filterHandler = label => {
+    contexts.setSession('selectCat', label)
   }
+
   var sp = serviceProviders;
-  cat ==='All' ? sp =serviceProviders: sp = serviceProviders.filter(sp => sp.catagory === cat)
-
-
-
-
+  session.selectCat ==='All' 
+  ? sp =serviceProviders
+  :sp = serviceProviders.filter(sp => sp.catagory === session.selectCat)
 
 
   return(
@@ -47,15 +41,15 @@ const ServiceProvider = () => {
         <h2 className="mt-2">Service Providers</h2>
         <Chip
             label = "All"
-            onClick={ () => addNewHandle('All') }
-            className={ cat === 'All' ? classes.active : classes.chip } />
+            onClick={ () => filterHandler('All') }
+            className={ session.selectCat === 'All' ? classes.active : classes.chip } />
 
         {categories.map(category =>(
           <Chip
             key = { category.id }
             label = { category.label }
-            onClick={ () => addNewHandle(category.label) }
-            className={ cat === category.label ? classes.active : classes.chip } />
+            onClick={ () => filterHandler(category.label) }
+            className={ session.selectCat === category.label ? classes.active : classes.chip } />
         ))}
 
           {sp.length >0 ? sp.map(sp =>(

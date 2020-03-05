@@ -1,9 +1,16 @@
-import React from 'react';
-
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import React,{ useContext } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import {Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { PabnainfoContext } from './store/Contexts';
 
 const CardItem = props => {
-const {name, avater, about} = props;
+  const contexts = useContext(PabnainfoContext);
+  const {id, name, avater, about} = props;
+
+  const handleOrder = id => {
+    contexts.setSession('selectSP', id)
+    console.log(contexts.session)
+  }
 
   return(
     <div>
@@ -26,8 +33,10 @@ const {name, avater, about} = props;
 
         {/* Card Actions */}
         <CardActions >
-          <Button size="small" color="primary" href="/" style={{marginLeft: 'auto'}}>
-            View Item
+          <Button color="primary" onClick={() => handleOrder(id)} style={{marginLeft: 'auto'}}>
+            <Link to="/order">
+              Get Service
+            </Link>
           </Button>
         </CardActions>
 
