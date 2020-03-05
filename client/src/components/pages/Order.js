@@ -30,21 +30,18 @@ const Order = () => {
     phone: '',
     email:'',
     location: '',
-    age: Number,
+    age: '',
     gender: '',
     task: ''
   }
   const OrderSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, 'Too Short!')
-      .max(70, 'Too Long!')
       .required('Required'),
     phone: Yup.string()
       .min(3, 'Too Short!')
-      .max(20, 'Too Long!')
       .required('Required'),
-    task: Yup.string()
-      .required('Required'),
+    task: Yup.string().required('Required'),
   })
 
 
@@ -92,17 +89,19 @@ const Order = () => {
                         fullWidth
                         required />
                     </FormControl>
+                    <ErrorMessage name="phone" />
 
                     <FormControl className={classes.formControl}>
                       <Field
                         as={ TextField }
-                        type="text"
                         name="name"
                         label="Full Name"
                         placeholder="John Duo"
                         fullWidth
                         required />
                     </FormControl>
+                    <ErrorMessage name="name" />
+                      
 
                     <FormControl className={classes.formControl}>
                       <Field
@@ -111,9 +110,9 @@ const Order = () => {
                         name="email"
                         label="Email"
                         placeholder="example@company.com"
-                        fullWidth
-                        required />
+                        fullWidth />
                     </FormControl>
+                    <ErrorMessage name="email" />
 
                     <FormControl className={classes.formControl}>
                       <InputLabel id="city">Location *</InputLabel>
@@ -129,6 +128,7 @@ const Order = () => {
                         <MenuItem value="Iswardi">Ishwardi</MenuItem>
                       </Field>
                     </FormControl>
+                    <ErrorMessage name="location" />
 
                     <Grid container justify="space-between">
 
@@ -136,7 +136,6 @@ const Order = () => {
                         <FormControl className={classes.formControl}>
                           <Field
                             as={ TextField }
-                            type="number"
                             name="age"
                             label="Your Age"
                             placeholder="24"
@@ -175,8 +174,9 @@ const Order = () => {
                         <MenuItem value="b">Problem B</MenuItem>
                       </Field>
                     </FormControl>
+                    <ErrorMessage name="task" />
                     <Button
-                      disabled={!errors }
+                      disabled={!isValid}
                       className="mt-3"
                       variant="contained"
                       color="primary"

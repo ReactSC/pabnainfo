@@ -9,7 +9,6 @@ const CardItem = props => {
 
   const handleOrder = id => {
     contexts.setSession('selectSP', id)
-    console.log(contexts.session)
   }
 
   return(
