@@ -105,7 +105,7 @@ const Orders = () => {
           id = {order.id}
           name = {order.name}
           task = {order.task}
-          mobileNo = {order.mobile}
+          mobileNo = {order.phone}
           status= {order.status}
           location = {order.location}
           spID= {order.spID}

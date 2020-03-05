@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Order = () => {
+const Order = props => {
   const contexts = useContext(PabnainfoContext);
   const serviceProviders = contexts.serviceProviders;
 
@@ -27,12 +27,15 @@ const Order = () => {
 
   const initialValues = {
     name: '',
+    task: '',
     phone: '',
     email:'',
     location: '',
     age: '',
     gender: '',
-    task: ''
+    serialNO: '',
+    orderTime: new Date(),
+    status: 'Pending'
   }
   const OrderSchema = Yup.object().shape({
     name: Yup.string()
@@ -46,8 +49,13 @@ const Order = () => {
 
 
   const submitHandler = (values) => {
-    alert(JSON.stringify(values, null, 2))
-    console.log(values)
+    const idMap = contexts.orders.map(order => Number(order.id))
+    const id = Math.max(...idMap)+1;
+    const spID = sp.id;
+    const value = {id, spID, ...values };
+    alert(JSON.stringify(value, null, 2))
+    contexts.addOrder(value);
+    console.log(contexts, props)
   }
 
   return(
@@ -78,11 +86,9 @@ const Order = () => {
                       avater      = {sp.avater}
                     />
 
-                    {/* <Field type="hidden" name="spID" value={sp.id} /> */}
                     <FormControl className={classes.formControl}>
                       <Field
                         as={ TextField }
-                        type="number"
                         name="phone"
                         label="Phone"
                         placeholder="01234567890"
@@ -136,6 +142,7 @@ const Order = () => {
                         <FormControl className={classes.formControl}>
                           <Field
                             as={ TextField }
+                            type="number"
                             name="age"
                             label="Your Age"
                             placeholder="24"

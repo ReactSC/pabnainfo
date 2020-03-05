@@ -36,8 +36,8 @@ const Provider=(props)=> {
 
 
   const orders = [
-    {id:1, name:'Sofiqul Islam', task:'Brain', mobile:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', spID:1, serialNO:12, orderTime:'22-12-2025:08.30 pm', status:'pending'},
-    {id:2, name:'Jubaer Ahmad', task:'Gastics', mobile:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', spID:1, serialNO:14, orderTime:'22-12-2025:12.24 pm', status:'pending'}
+    {id:1, spID:1, name:'Sofiqul Islam', task:'Brain', phone:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', serialNO:12, orderTime:'22-12-2025:08.30 pm', status:'pending'},
+    {id:2, spID:1, name:'Jubaer Ahmad', task:'Gastics', phone:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', serialNO:14, orderTime:'22-12-2025:12.24 pm', status:'pending'}
   ]
 
   const serviceProviders = [
@@ -93,7 +93,11 @@ const Provider=(props)=> {
   }
 
   const addOrder = (value) => {
-    
+    console.log(value);
+    setData({
+      ...data,
+      orders: data.orders.push(value)
+    })
   }
 
   const setSession = (key, value) => {
@@ -113,6 +117,8 @@ const Provider=(props)=> {
     rmExperience,
 
     orders: data.orders,
+    addOrder,
+
     serviceProviders: data.serviceProviders,
     companies: data.companies,
     partners: data.partners,
