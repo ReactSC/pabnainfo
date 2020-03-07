@@ -10,7 +10,8 @@ const Provider=(props)=> {
     {id:2, name:'FAQ', url:'/faq'},
     {id:3, name:'Contact', url:'/contact'},
     {id:4, name:'Worker', url:'/sp'},
-    {id:5, name:'DashBoard', url:'/dashboard'}
+    {id:5, name:'DashBoard', url:'/dashboard'},
+    {id:6, name:'Ticket', url:'/ticket'}
   ]
   const users = [
     {id:1, name:'Sofiqul Islam',role:'Admin',avater:'//darunit.com/eop/images/1.jpg', about:'About text for Sofiqul Islam'},
@@ -36,8 +37,8 @@ const Provider=(props)=> {
 
 
   const orders = [
-    {id:1, spID:1, name:'Sofiqul Islam', task:'Brain', phone:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', serialNO:12, orderTime:'22-12-2025:08.30 pm', status:'pending'},
-    {id:2, spID:1, name:'Jubaer Ahmad', task:'Gastics', phone:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', serialNO:14, orderTime:'22-12-2025:12.24 pm', status:'pending'}
+    {id:1, spID:1, name:'Sofiqul Islam', task:'Brain', phone:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', serialNO:12, orderTime:1519999899400, status:'pending'},
+    {id:2, spID:1, name:'Jubaer Ahmad', task:'Gastics', phone:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', serialNO:14, orderTime:1599129864400, status:'pending'}
   ]
 
   const serviceProviders = [
@@ -60,6 +61,7 @@ const Provider=(props)=> {
   const session = {
     selectCat: 'All',
     selectSP: 1,
+    ticket:null,
   }
 
 

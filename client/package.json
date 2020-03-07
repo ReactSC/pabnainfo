@@ -21,6 +21,7 @@
     "react-scripts": "3.4.0",
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
+    "react-to-print": "^2.6.1",
     "yup": "^0.28.1"
   },
   "scripts": {

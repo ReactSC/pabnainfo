@@ -14,6 +14,7 @@ import FAQ from './pages/FAQ';
 import DashBoard from './pages/Dashboard';
 import Categories from './pages/Categories';
 import Order from './pages/Order';
+import Ticket from './pages/Ticket';
 import NotFound from './NotFound';
 
 
@@ -30,6 +31,8 @@ const App = () => {
       <Navbar />
       <Switch>
 
+      <Route path="/ticket/:id" component={ Ticket } />
+      <Route path="/ticket" component={ Ticket } />
       <Route path="/categories" component={ Categories } />
       <Route path="/dashboard" component={ DashBoard } />
       <Route path="/faq" component={ FAQ } />
