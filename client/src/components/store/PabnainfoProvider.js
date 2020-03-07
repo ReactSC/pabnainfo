@@ -62,6 +62,7 @@ const Provider=(props)=> {
     selectCat: 'All',
     selectSP: 1,
     ticket:null,
+    ticketErr:false,
   }
 
 

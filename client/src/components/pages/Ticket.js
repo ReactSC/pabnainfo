@@ -1,4 +1,4 @@
-import React, { useRef, useContext, Fragment, useState } from "react";
+import React, { useRef, useContext, Fragment, useState, useEffect } from "react";
 import ReactToPrint from "react-to-print";
 import { Button, TextField, Typography, Grid, Container } from '@material-ui/core';
 import { Print, Search, Refresh, Home } from '@material-ui/icons';
@@ -32,15 +32,16 @@ const Card = () => {
 const SearchField = () => {
   const contexts = useContext(PabnainfoContext);
   const orders = contexts.orders;
+  const session = contexts.session;
   const setSession = contexts.setSession;
 
-  const [err, setErr] = useState(false);
+  // const [err, setErr] = useState(false);
 
   const submitHandler = values => {
     const id = Number(values.id);
     const ticket = orders.filter(order => order.id === id && order.status === "pending" )[0];
     setSession('ticket', ticket)
-    if(!ticket){setErr(true)}
+    if(!ticket){setSession('ticketErr', true)}
   }
 
   return(
@@ -71,13 +72,14 @@ const SearchField = () => {
               </Button>
             </Form>
             {
-            err ? <Typography className="text-center my-3" variant="h5" color="error" >Please Provide a Valid Order ID.</Typography>:null
+            session.ticketErr ? <Typography className="text-center my-3" variant="h5" color="error" >Please Provide a Valid Order ID.</Typography>:null
             }
           </Container>
         }
     </Formik>
   )
 }
+// just use for printing the ticket (class bassed component)
 class ComponentToPrint extends React.Component{
   render() {
     return (
@@ -86,16 +88,27 @@ class ComponentToPrint extends React.Component{
   }
 }
 
-const Ticket = () => {
+const Ticket = (props) => {
   const contexts = useContext(PabnainfoContext);
+  const orders = contexts.orders;
   const session = contexts.session;
   const setSession = contexts.setSession;
 
   const componentRef = useRef();
+  const id = Number(props.match.params.id);
 
+  useEffect(() => {
+    if(id) {
+      const ticket = orders.filter(order => order.id === id && order.status === "pending" )[0];
+      setSession('ticket', ticket)
+      if(!ticket){setSession('ticketErr', true)}
+    }
+  },[]);
+    
   const resetTicket = () => {
     setSession('ticket', null)
   }
+
   return (
     <Fragment>
       <div className='mx-auto my-3' style={{maxWidth:370}}>
