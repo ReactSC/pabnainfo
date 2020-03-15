@@ -2,7 +2,9 @@ import React, { Fragment, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, List, ListItem, ListItemAvatar, ListItemText, Toolbar, Avatar, Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { PabnainfoContext } from '../store/Contexts';
+import { Link } from 'react-router-dom';
+import { SpContext } from '../store/Contexts';
+
 
 // import Actions from './Actions';
 
@@ -29,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 // Single Lsit Service Provider
 export const SingleList1 = props => {
 
-const{ name, catagory, skill, degree, avater } = props;
+const{ id, name, category, skills, degree, avater } = props;
 
 
   const classes = useStyles();
@@ -39,9 +41,6 @@ const{ name, catagory, skill, degree, avater } = props;
     setOpen(!open);
   };
   const handleClose = () => {
-    setOpen(false);
-  }
-  const handleOrder = () => {
     setOpen(false);
   }
 
@@ -61,12 +60,12 @@ const{ name, catagory, skill, degree, avater } = props;
                 { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    { props.role? props.role : props.location? props.location : catagory }
+                    { props.role? props.role : props.location? props.location : category }
                   </Typography>
                 </Toolbar>
               </Fragment>
             )}
-            secondary={props.about? props.about:`${skill} - ${degree}`} />
+            secondary={props.about? props.about:`${skills} - ${degree}`} />
 
         </ListItem>
 
@@ -80,12 +79,12 @@ const{ name, catagory, skill, degree, avater } = props;
 
           <Toolbar style={{padding:0,minHeight:0}}>
             <Typography variant="body1" className="mr-2" color="textPrimary">
-              { props.role? props.role : props.location? props.location :catagory }
+              { props.role? props.role : props.location? props.location :category }
             </Typography>
           </Toolbar>
           <Toolbar style={{padding:0,minHeight:0}}>
           <Typography variant="body2" className="mr-2" color="textPrimary">
-            {props.about? props.about:`${skill} - ${degree}`}
+            {props.about? props.about:`${skills} - ${degree}`}
             </Typography>
           </Toolbar>
         </DialogTitle>
@@ -99,8 +98,8 @@ const{ name, catagory, skill, degree, avater } = props;
         </DialogContent>
 
         <DialogActions>
-          <Button variant="outlined" onClick={handleOrder} color="primary">
-            Get Service
+          <Button variant="outlined" color="primary">
+            <Link to={`/order/${id}`}>Get Service</Link>
           </Button>
           {/* <Button variant="outlined" onClick={handleClose} color="primary">
             Verify
@@ -119,16 +118,16 @@ const{ name, catagory, skill, degree, avater } = props;
 
 // Final Render
 const ServiceProviders = () => {
-  const context = useContext(PabnainfoContext);
-  const serviceProviders = context.serviceProviders;
+  const serviceProviders = useContext(SpContext).sp;
   return(
     <Fragment>
       {serviceProviders.map(sp =>(
         <SingleList1
           key         = {sp.id}
+          id          = {sp.id}
           name        = {sp.name}
-          catagory    = {sp.catagory}
-          skill       = {sp.skill}
+          category    = {sp.category}
+          skills       = {sp.skills}
           degree      = {sp.degree}
           avater      = {sp.avater}
         />

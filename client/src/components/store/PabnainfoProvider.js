@@ -1,31 +1,42 @@
 import React,{ useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { PabnainfoContext } from './Contexts';
 
-
+import { MenuItemProvider, CategoryProvider, SubCategoryProvider, SpProvider, OrderProvider, UserProvider, CustomerProvider, OfficeProvider, ExProvider } from './index'
 
 const Provider=(props)=> {
-  const menuItems = [
-    {id:1, name:'About', url:'/about'},
-    {id:2, name:'FAQ', url:'/faq'},
-    {id:3, name:'Contact', url:'/contact'},
-    {id:4, name:'Worker', url:'/sp'},
-    {id:5, name:'DashBoard', url:'/dashboard'},
-    {id:6, name:'Ticket', url:'/ticket'}
-  ]
-  const users = [
-    {id:1, name:'Sofiqul Islam',role:'Admin',avater:'//darunit.com/eop/images/1.jpg', about:'About text for Sofiqul Islam'},
-    {id:2, name:'Jubaer Ahamad',role:'Admin',avater:'//darunit.com/eop/images/2.jpg', about:'About text for Jubaer Ahamad'},
-    {id:3, name:'Samrat Nasir',role:'Member',avater:'//darunit.com/eop/images/3.jpg', about:'About text for Samrat Nasir'},
-  ]
-  const categories = [
-    { id: 1, label: 'Doctor', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
-    { id: 2, label: 'Ret-A-car', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
-    { id: 3, label: 'Programmer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
-    { id: 4, label: 'Holeseller', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
-    { id: 5, label: 'Pipe Line Cleaner', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
-    { id: 6, label: 'Developer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' }
-  ]
+  // const [categories1, setCategories1] = useState([]);
+  // const [customers1, setCustomers1] = useState([]);
+  // const [menuItems1, setMenuItems1] = useState([]);
+  // const [orders1, setOrders1] = useState([]);
+
+  // // console.log(menuContext)
+
+
+  // // const menuItems = [
+  // //   {id:1, name:'About', url:'/about'},
+  // //   {id:2, name:'FAQ', url:'/faq'},
+  // //   {id:3, name:'Contact', url:'/contact'},
+  // //   {id:4, name:'Worker', url:'/sp'},
+  // //   {id:5, name:'DashBoard', url:'/dashboard'},
+  // //   {id:6, name:'Ticket', url:'/ticket'}
+  // // ]
+  // const users = [
+  //   {id:1, name:'Sofiqul Islam',role:'Admin',avater:'//darunit.com/eop/images/1.jpg', about:'About text for Sofiqul Islam'},
+  //   {id:2, name:'Jubaer Ahamad',role:'Admin',avater:'//darunit.com/eop/images/2.jpg', about:'About text for Jubaer Ahamad'},
+  //   {id:3, name:'Samrat Nasir',role:'Member',avater:'//darunit.com/eop/images/3.jpg', about:'About text for Samrat Nasir'},
+  // ]
+
+  // // console.log(categories)
+
+  // const categories = [
+  //   { id: 1, label: 'Doctor', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+  //   { id: 2, label: 'Ret-A-car', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+  //   { id: 3, label: 'Programmer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+  //   { id: 4, label: 'Holeseller', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+  //   { id: 5, label: 'Pipe Line Cleaner', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' },
+  //   { id: 6, label: 'Developer', avater:'s', thumb:'sd', about:'Voluptate consequat anim incididunt deserunt Voluptate consequat anim incididunt deserunt' }
+  // ]
 
   const experiences = [
     { id: 0, label: 'Experiences One' },
@@ -36,21 +47,21 @@ const Provider=(props)=> {
   ]
 
 
-  const orders = [
-    {id:1, spID:1, name:'Sofiqul Islam', task:'Brain', phone:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', serialNO:12, orderTime:1519999899400, status:'pending'},
-    {id:2, spID:1, name:'Jubaer Ahmad', task:'Gastics', phone:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', serialNO:14, orderTime:1599129864400, status:'pending'}
-  ]
+  // const orders = [
+  //   {id:1, spID:1, name:'Sofiqul Islam', task:'Brain', phone:'01799008442', email:'schoolwab@gmail.com', location:'Pabna Sadar', age:25, gender:'male', serialNO:12, orderTime:1519999899400, status:'pending'},
+  //   {id:2, spID:1, name:'Jubaer Ahmad', task:'Gastics', phone:'01799055402', email:'jubaer@gmail.com', location:'Pabna Sadar', age:20, gender:'male', serialNO:14, orderTime:1599129864400, status:'pending'}
+  // ]
 
-  const serviceProviders = [
-    {id:1, name:'Dr. Mujibur Rahman', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/1.jpg',about:'About is Nisi et exercitation enim occaecat laborum.'},
-    {id:2, name:'Dr. Jubaer Ahmad', catagory:'Programmer', skill:'Brain', degree:'React JS',avater:'//darunit.com/eop/images/2.jpg',about:'About is Tempor nulla culpa sint Lorem nisi voluptate laborum ullamco anim nostrud id laboris tempor elit.'},
-    {id:3, name:'Dr. Nirob Hasan', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/9.jpg',about:'About is Eu consequat duis ipsum qui minim excepteur.'}
-  ]
+  // const serviceProviders = [
+  //   {id:1, name:'Dr. Mujibur Rahman', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/1.jpg',about:'About is Nisi et exercitation enim occaecat laborum.'},
+  //   {id:2, name:'Dr. Jubaer Ahmad', catagory:'Programmer', skill:'Brain', degree:'React JS',avater:'//darunit.com/eop/images/2.jpg',about:'About is Tempor nulla culpa sint Lorem nisi voluptate laborum ullamco anim nostrud id laboris tempor elit.'},
+  //   {id:3, name:'Dr. Nirob Hasan', catagory:'Doctor', skill:'Brain', degree:'pHD',avater:'//darunit.com/eop/images/9.jpg',about:'About is Eu consequat duis ipsum qui minim excepteur.'}
+  // ]
 
-  const companies = [
-    {id:1, name:'Pabna Genaral Hospital', location:'Pabna Sadar', about:'Sort Discription of Pabna Genaral Hospital.', avater:'avater'},
-    {id:1, name:'Darun IT', location:'Pabna Sadar', about:'Sort Discription of Darun IT', avater:'avater2'}
-  ]
+  // const companies = [
+  //   {id:1, name:'Pabna Genaral Hospital', location:'Pabna Sadar', about:'Sort Discription of Pabna Genaral Hospital.', avater:'avater'},
+  //   {id:1, name:'Darun IT', location:'Pabna Sadar', about:'Sort Discription of Darun IT', avater:'avater2'}
+  // ]
   
   const partners = [
     {id:1, name:'Darun IT', url:'www.darunit.com', logo:'https://i.ibb.co/njZs1cF/logo-square.png'},
@@ -59,80 +70,109 @@ const Provider=(props)=> {
   ]
 
   const session = {
-    selectCat: 'All',
-    selectSP: 1,
-    ticket:null,
-    ticketErr:false,
+    selectCat   : 'All',
+    selectSP    : 1,
+    ticket      : null,
+    ticketErr   : false,
   }
 
 
+
+
+
+
+
+
   const [data, setData] = useState({
-    menuItems,
-    users,
-    categories,
+    // menuItems,
+    // users: customers1,
+    // categories: categories1,
     experiences,
-    orders,
-    serviceProviders,
-    companies,
+    // orders,
+    // serviceProviders,
+    // companies,
     partners,
     session,
   })
   
+  
 
 
-  const rmMenuItem = (id) => {
-    const newData = data.menuItems.filter(menuItems=> id !== menuItems.id)
-    setData({...data ,menuItems:newData});
-  }
+  // const rmMenuItem = (id) => {
+  //   const newData = data.menuItems.filter(menuItems=> id !== menuItems.id)
+  //   setData({...data ,menuItems:newData});
+  // }
 
-  const rmCategory = (id) => {
-    const newData = data.categories.filter(categories=> id !== categories.id)
-    setData({...data ,categories:newData});
-  }
+  // const rmCategory = (id) => {
+  //   const newData = data.categories.filter(categories=> id !== categories.id)
+  //   setData({...data ,categories:newData});
+  // }
 
   const rmExperience = (id) => {
     const newData = data.experiences.filter(experiences=> id !== experiences.id)
     setData({...data ,experiences:newData});
   }
 
-  const addOrder = (value) => {
-    console.log(value);
-    setData({
-      ...data,
-      orders: data.orders.push(value)
-    })
-  }
-
+  // const addOrder = (value) => {
+  //   setData({
+  //     ...data,
+  //     orders: [...data.orders, value]
+  //   })
+  // }
   const setSession = (key, value) => {
     setData({...data, session:{...data.session, [key]:value}})
   }
 
   const access = {
-    menuItems: data.menuItems,
-    rmMenuItem,
+    // menuItems: data.menuItems,
+    // menuItems: menuItems1,
+    // rmMenuItem,
 
-    users: data.users,
+    // users: data.users,
 
-    categories: data.categories,
-    rmCategory,
+    // categories: data.categories,
+    // categories: categories1,
+    // rmCategory,
 
     experiences: data.experiences,
     rmExperience,
 
-    orders: data.orders,
-    addOrder,
+    // orders: data.orders,
+    // orders: orders1,
+    // addOrder,
 
-    serviceProviders: data.serviceProviders,
-    companies: data.companies,
+    // serviceProviders: data.serviceProviders,
+    // companies: data.companies,
     partners: data.partners,
 
     session: data.session,
     setSession,
   }
 
+
   return(
     <PabnainfoContext.Provider value={access} >
-      { props.children }
+      <MenuItemProvider>
+        <CategoryProvider>
+          <SubCategoryProvider>
+            <SpProvider>
+              <OrderProvider>
+                <UserProvider>
+                  <CustomerProvider>
+                    <OfficeProvider>
+                      <ExProvider>
+
+                        { props.children }
+
+                      </ExProvider>
+                    </OfficeProvider>
+                  </CustomerProvider>
+                </UserProvider>
+              </OrderProvider>
+            </SpProvider>
+          </SubCategoryProvider>
+        </CategoryProvider>
+      </MenuItemProvider>
     </PabnainfoContext.Provider>
   )
 }

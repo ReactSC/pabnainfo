@@ -4,7 +4,7 @@ import { SwipeableDrawer, IconButton, List, ListItem, ListItemText } from '@mate
 import { Menu } from '@material-ui/icons';
 import { NavLink } from 'react-router-dom';
 
-import { PabnainfoContext } from '../store/Contexts';
+import { MenuItemContext } from '../store/Contexts';
 
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 const SideDrawer = () => {
-  const menuItems = useContext(PabnainfoContext).menuItems;
+  const menuItems = useContext(MenuItemContext).menuItems;
 
   const classes = useStyles();
   const [state, setState] = useState({right: false});

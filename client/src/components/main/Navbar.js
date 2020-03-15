@@ -2,10 +2,10 @@ import React, { Fragment, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, useTheme, useMediaQuery, useScrollTrigger, Slide } from '@material-ui/core';
-
+import { Link } from 'react-router-dom';
 import SideDrawer from './SideDrawer';
 import BackToTop from '../ScrollTop';
-import { PabnainfoContext } from '../store/Contexts';
+import { MenuItemContext } from '../store/Contexts';
 
 
 const HideOnScroll = props => {
@@ -37,7 +37,7 @@ const useStyles = makeStyles(() =>
 
 
 const Navbar = props => {
-  const menuItems = useContext(PabnainfoContext).menuItems;
+  const menuItems = useContext(MenuItemContext).menuItems;
 
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
@@ -51,7 +51,7 @@ const Navbar = props => {
           <Toolbar>
             <img className={ classes.brand } src="https://i.ibb.co/hy78S6t/favicon.png" alt="logo" />
             <Typography variant="h4" className={classes.title}>
-              Pabnainfo
+              <Link className="text-light" to="/">Pabna info</Link>
             </Typography>
             {md? (
               <Fragment>

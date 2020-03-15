@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Card, Typography, CardHeader, Avatar, CardContent, CardMedia } from '@material-ui/core';
-import { PabnainfoContext } from '../store/Contexts';
+import { PabnainfoContext, CategoryContext } from '../store/Contexts';
 
 const useStyle = makeStyles({
   root:{
@@ -33,7 +33,7 @@ const useStyle = makeStyles({
 })
 
 const Categories = props => {
-  const context = useContext(PabnainfoContext);
+  const context = useContext(CategoryContext);
   const categories = context.categories;
 
 

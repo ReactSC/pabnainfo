@@ -1,12 +1,11 @@
 import React,{ useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Container, Typography, Toolbar, Button } from '@material-ui/core';
-import { PabnainfoContext } from '../store/Contexts';
+import { SpContext } from '../store/Contexts';
 import CardItem from '../cardItem';
 
 const CardSection = () => {
-const context = useContext(PabnainfoContext);
-const serviceProviders = context.serviceProviders;
+  const serviceProviders = useContext(SpContext).sp;
 
   return(
     <div>

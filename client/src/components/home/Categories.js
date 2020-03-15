@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { PabnainfoContext } from '../store/Contexts';
+import { CategoryContext, PabnainfoContext } from '../store/Contexts';
 
 const useStyle= makeStyles({
   grid: {
@@ -45,7 +45,7 @@ const SingleItem = props => {
 }
 
 const Categories = () => {
-  const context = useContext(PabnainfoContext);
+  const context = useContext(CategoryContext);
   const categories = context.categories;
 
   const theme = useTheme();
@@ -54,44 +54,38 @@ const Categories = () => {
 
 
 
-  return(
-    <div style={{background:'#ffaacc'}}>
-      <Container maxWidth="lg" style={{paddingTop:80, paddingBottom:80}}>
-
+  return (
+    <div style={{ background: "#ffaacc" }}>
+      <Container maxWidth="lg" style={{ paddingTop: 80, paddingBottom: 80 }}>
         <Toolbar style={{ padding: 0 }}>
           <Typography className="mb-4" variant="h4">
             Most Uses Type of Services
           </Typography>
-          <Button style={{ marginLeft: 'auto', marginTop:'-25px' }}>
+          <Button style={{ marginLeft: "auto", marginTop: "-25px" }}>
             <Link to="/categories">More</Link>
           </Button>
         </Toolbar>
 
-        <Grid container align='center' justify='center'>
-        <OwlCarousel
-          className="owl-theme"
-          items= { !sm ? 3 :!md ? 4 : 6 }
-          loop= {true}
-          margin={10}
-          center={false}
-          autoplay
-          autoplayTimeout={2500}
-          dots={false}
-          autoplayHoverPause
-        >
-          {categories.map(cat => (
-            <SingleItem
-              key = { cat.id } 
-              label = {cat.label}
-              avater = {cat.avater}
-            />
-          ))}
-        </OwlCarousel>
-
+        <Grid container align="center" justify="center">
+          <OwlCarousel
+            className="owl-theme"
+            items={!sm ? 3 : !md ? 4 : 6}
+            loop={true}
+            margin={10}
+            center={false}
+            autoplay
+            autoplayTimeout={2500}
+            dots={false}
+            autoplayHoverPause
+          >
+            {categories && categories.map(cat => (
+              <SingleItem key={cat.id} label={cat.label} avater={cat.avater} />
+            ))}
+          </OwlCarousel>
         </Grid>
       </Container>
     </div>
-  )
+  );
 }
 
 export default Categories;

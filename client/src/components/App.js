@@ -8,6 +8,7 @@ import Footer from './main/Footer';
 // import Pages
 import Home from './pages/Home';
 import ServiceProvider from './pages/ServiceProvider';
+import AddNew from './pages/AddNew';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
@@ -16,6 +17,7 @@ import Categories from './pages/Categories';
 import Order from './pages/Order';
 import Ticket from './pages/Ticket';
 import NotFound from './NotFound';
+// import Category from './dashboard/Category';
 
 
 import './App.css';
@@ -31,6 +33,7 @@ const App = () => {
       <Navbar />
       <Switch>
 
+      {/* <Route path="/cat" component={ Category } /> */}
       <Route path="/ticket/:id" component={ Ticket } />
       <Route path="/ticket" component={ Ticket } />
       <Route path="/categories" component={ Categories } />
@@ -38,7 +41,9 @@ const App = () => {
       <Route path="/faq" component={ FAQ } />
       <Route path="/contact" component={ Contact } />
       <Route path="/about" component={ About } />
+      <Route path="/order/:id" component={ Order } />
       <Route path="/order" component={ Order } />
+      <Route path="/addNew" component={ AddNew } />
       <Route path="/sp" component={ ServiceProvider } />
       <Route path="/" exact component={ Home } />
       <Route component={ NotFound } />

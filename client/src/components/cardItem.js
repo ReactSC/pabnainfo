@@ -1,16 +1,10 @@
-import React,{ useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
-import { PabnainfoContext } from './store/Contexts';
 
 const CardItem = props => {
-  const contexts = useContext(PabnainfoContext);
   const {id, name, avater, about} = props;
-
-  const handleOrder = id => {
-    contexts.setSession('selectSP', id)
-  }
-
+  
   return(
     <div>
       <Card>
@@ -26,14 +20,14 @@ const CardItem = props => {
             { name }
           </Typography>
           <Typography component="p">
-            { about.slice(0, 60) }
+            { about?about.slice(0, 60) : about }
           </Typography>
         </CardContent>
 
         {/* Card Actions */}
         <CardActions >
-          <Button color="primary" onClick={() => handleOrder(id)} style={{marginLeft: 'auto'}}>
-            <Link to="/order">
+          <Button color="primary" style={{marginLeft: 'auto'}}>
+            <Link to={`/order/${id}`}>
               Get Service
             </Link>
           </Button>

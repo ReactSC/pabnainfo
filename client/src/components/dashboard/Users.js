@@ -1,10 +1,10 @@
 import React, { Fragment, useContext } from 'react';
 import { SingleList1 } from './ServiceProviders';
-import { PabnainfoContext } from '../store/Contexts';
+import { UserContext } from '../store/Contexts';
 
 // Final Render
 const Users = () => {
-  const users = useContext(PabnainfoContext).users;
+  const users = useContext(UserContext).users;
 
   return(
     <Fragment>

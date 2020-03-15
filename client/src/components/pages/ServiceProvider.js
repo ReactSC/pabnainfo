@@ -1,14 +1,16 @@
 import React, { Fragment, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Chip, Typography  } from '@material-ui/core';
+import { Button, Container, Chip, Typography  } from '@material-ui/core';
 import { SingleList1 } from '../dashboard/ServiceProviders';
-import { PabnainfoContext } from '../store/Contexts';
+import { SpContext, PabnainfoContext, CategoryContext } from '../store/Contexts';
 
 
 const ServiceProvider = props => {
+  const serviceProviders = useContext(SpContext).sp;
+  const categories = useContext(CategoryContext).categories;
   const contexts = useContext(PabnainfoContext);
-  const serviceProviders = contexts.serviceProviders;
-  const categories = contexts.categories;
+  // const categories = contexts.categories;
   const session = contexts.session;
 
 
@@ -29,10 +31,10 @@ const ServiceProvider = props => {
     contexts.setSession('selectCat', label)
   }
 
-  var sp = serviceProviders;
+  let sp = serviceProviders;
   session.selectCat ==='All' 
   ? sp =serviceProviders
-  :sp = serviceProviders.filter(sp => sp.catagory === session.selectCat)
+  :sp = serviceProviders.filter(sp => sp.category === session.selectCat)
 
 
   return(
@@ -55,13 +57,19 @@ const ServiceProvider = props => {
           {sp.length >0 ? sp.map(sp =>(
             <SingleList1
               key         = {sp.id}
+              id          = {sp.id}
               name        = {sp.name}
-              catagory    = {sp.catagory}
+              category    = {sp.category}
               skill       = {sp.skill}
               degree      = {sp.degree}
               avater      = {sp.avater}
             />
-          )): <Typography className="text-center" variant="h6" color="error">No Service Provider has been Found!</Typography>}
+          )) : <Typography className="text-center" variant="h6" color="error">No Service Provider has been Found!</Typography>}
+        
+        <Button className="my-2" variant="contained">
+          <Link to="/addNew">Add New Service Provider</Link>
+        </Button>
+
       </Container>
     </Fragment>
   )

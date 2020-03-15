@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Chip, Paper } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
-import { PabnainfoContext } from '../store/Contexts'
+import { MenuItemContext } from '../store/Contexts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MenuItems = () =>{
-  const contexts = useContext(PabnainfoContext);
+  const contexts = useContext(MenuItemContext);
   const menuItems = contexts.menuItems;
 
   const classes = useStyles();

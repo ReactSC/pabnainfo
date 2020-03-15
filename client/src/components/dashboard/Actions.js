@@ -2,13 +2,6 @@ import React,{ useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import { MoreVert } from '@material-ui/icons';
 
-// const option = [
-//   'Full View',
-//   'Pending',
-//   'Confirm',
-//   'See Ticket',
-//   'Delete'
-// ];
 
 const Actions = props => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,11 +13,9 @@ const Actions = props => {
   };
 
   const handleClose = (option) => {
-    if(typeof(option)==='string') {
-      alert(`You Selected ${options}`)
-      setOptions(option)
-    }
+    setOptions(option)
     setAnchorEl(null);
+    alert(`You Selected ${options}`)
   };
 
   return (

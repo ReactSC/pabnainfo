@@ -1,20 +1,21 @@
 import React, { Fragment, useContext } from 'react';
 
 import { SingleList1 } from './ServiceProviders';
-import { PabnainfoContext } from '../store/Contexts';
+import { OfficeContext } from '../store/Contexts';
 
 // Final Render
 const Companies = () => {
-  const context = useContext(PabnainfoContext);
-  const companies = context.companies;
+  const offices = useContext(OfficeContext).offices;
+
   return(
     <Fragment>
-      {companies.map(company => (
+      {offices.map((office, index) => (
         <SingleList1 
-          name        = {company.name}
-          location    = {company.location}
-          avater      = {company.avater}
-          about       = {company.about}
+          key= {index}
+          name={office.name}
+          location={office.location}
+          avater={office.thumb}
+          about={office.about}
         />
       ))}
     </Fragment>

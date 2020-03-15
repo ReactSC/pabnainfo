@@ -3,15 +3,14 @@ import { Container, Grid, Toolbar, useMediaQuery,useTheme, Typography, Button, I
 import { ChevronLeft, ArrowRightAlt } from '@material-ui/icons';
 
 import CardItem from '../cardItem'
+import { SpContext } from '../store/Contexts';
 
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'
-import { PabnainfoContext } from '../store/Contexts';
 
 const CardSection2 = () => {
-  const context = useContext(PabnainfoContext);
-  const serviceProviders = context.serviceProviders;
+  const serviceProviders = useContext(SpContext).sp;
 
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up('md'));
@@ -55,12 +54,13 @@ const CardSection2 = () => {
           dots={false}
         >
           {serviceProviders.map(sp => (
-            <Grid key= {sp.id} item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid } >
+            <Grid key={sp.id} item xs={12} sm={6} md={4} lg={4} xl={3} style={style.grid} >
               <CardItem
                 style={style.avater}
-                name      = {sp.name}
-                avater    = {sp.avater}
-                about     = {sp.about}
+                id={sp.id}
+                name={sp.name}
+                avater={sp.avater}
+                about={sp.about}
               />
             </Grid>
           ))}

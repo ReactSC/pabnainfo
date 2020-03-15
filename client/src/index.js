@@ -7,11 +7,10 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import Provider from './components/store/PabnainfoProvider';
-import { basePath } from './config';
 import ScrollToTop from './components/ScrollToTop'
 
 ReactDOM.render(
-  <BrowserRouter basename={basePath} >
+  <BrowserRouter>
     <ScrollToTop />
     <Provider>
       <App />
@@ -19,4 +18,4 @@ ReactDOM.render(
   </BrowserRouter>
 , document.getElementById('root'));
 
-serviceWorker.unregister();
+serviceWorker.register();

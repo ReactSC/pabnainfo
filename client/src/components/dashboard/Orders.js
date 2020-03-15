@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, Paper, ListItem, Avatar, ListItemIcon, ListItemText, Collapse, Typography, Toolbar } from '@material-ui/core';
 import { ExpandLess, ExpandMore  } from '@material-ui/icons';
 
-import { PabnainfoContext } from '../store/Contexts';
+import { SpContext, OrderContext, CustomerContext } from '../store/Contexts';
 import Actions from './Actions';
 
 const useStyles = makeStyles(theme => ({
@@ -19,12 +19,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomList = props => {
-  const { id, name, task, mobileNo, location, spID, status } = props;
-  const context = useContext(PabnainfoContext);
-  const serviceProviders = context.serviceProviders;
-  
-  // Filter A single Service Provider by Order ID
-  const sp = id => serviceProviders.filter(sp => sp.id === id)
+  const { orderId, name, task, mobileNo, location, spName, spAvater, spSkills, spDegrees, status } = props;
 
 
   const option = {
@@ -36,7 +31,6 @@ const CustomList = props => {
     'Delete'
   ]
 };
-
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -61,7 +55,7 @@ const CustomList = props => {
                 { name }
                 <Toolbar style={{padding:0,minHeight:0}}>
                   <Typography variant="body2" className="mr-2" color="textPrimary">
-                    { id }
+                    { orderId }
                   </Typography>
                   <Typography variant="body2" color="error">
                     { status }
@@ -77,10 +71,10 @@ const CustomList = props => {
 
             <ListItem button className={classes.nested}>
               <ListItemIcon>
-                <Avatar src={sp( spID)[0].avater } alt={ sp(spID)[0].name } />
+                <Avatar src={ spAvater } alt={ spName } />
               </ListItemIcon>
-              <ListItemText primary={ sp(spID)[0].name }
-            secondary={`${sp(spID)[0].skill}- ${sp(spID)[0].degree}`} />
+              <ListItemText primary={spName }
+            secondary={`${ spSkills }- ${ spDegrees }`} />
             </ListItem>
           </List>
         </Collapse>
@@ -90,27 +84,39 @@ const CustomList = props => {
 }
 
 
-
-
 // Final Render
-const Orders = () => {
-  const context = useContext(PabnainfoContext);
-  const orders = context.orders;
+const Orders = props => {
+  const orders = useContext(OrderContext).orders;
+  const customers = useContext(CustomerContext).customers;
+  const serviceProviders = useContext(SpContext).sp;
 
+
+  // mobile number get by user
   return (
     <Fragment>
-      {orders.map(order=>(
-        <CustomList
-          key = {order.id}
-          id = {order.id}
-          name = {order.name}
-          task = {order.task}
-          mobileNo = {order.phone}
-          status= {order.status}
-          location = {order.location}
-          spID= {order.spID}
-        />
-      ))}
+      {orders.map(order=> {
+        // Filter A single Service Provider by Order ID
+        const customer = customers.find(c => Number(c.id) === Number(order.customerID))
+        var sp = serviceProviders.filter(sp => Number(sp.id) === Number(order.spID))[0];
+        return (
+          <CustomList
+            key={order.id}
+            orderId={order.id}
+            name={customer && customer.name}
+            task={order.task}
+            mobileNo={customer && customer.phone}
+            status={order.status}
+            location={`${customer && customer.address} ${customer &&
+              customer.city}`}
+            spID={order.spID}
+            sp={sp}
+            spName={sp && sp.name}
+            spAvater={sp && sp.avater}
+            spSkills={sp && sp.skills}
+            spDegrees={sp && sp.degree}
+          />
+        );
+      })}
     </Fragment>
   )
 }

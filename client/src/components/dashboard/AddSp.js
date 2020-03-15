@@ -1,4 +1,5 @@
 import React, { useContext, Fragment } from 'react';
+import { PabnainfoContext } from '../store/Contexts';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core/styles'
@@ -6,8 +7,6 @@ import { Container, Grid, Paper, TextField, Select, MenuItem, Button, Typography
 // import {  } from '@material-ui/core/icons'
 import { SingleList1 } from '../dashboard/ServiceProviders';
 // import FormikField from '../FormikField'
-
-import { SpContext, OrderContext } from '../store/Contexts';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -20,12 +19,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Order = props => {
-  const serviceProviders = useContext(SpContext).sp;
-  const orders = useContext(OrderContext).orders;
+  const contexts = useContext(PabnainfoContext);
+  const serviceProviders = contexts.serviceProviders;
 
   const id = Number(props.match.params.id);
 
-  const sp = serviceProviders.find(sp => Number(sp.id) === id);
+  const sp = serviceProviders.filter(sp=> sp.id === id)[0];
   if(!sp) {
     props.history.push('/');
   }
@@ -55,13 +54,12 @@ const Order = props => {
 
 
   const submitHandler = (values) => {
-    const idMap = orders.map(order => Number(order.id))
+    const idMap = contexts.orders.map(order => Number(order.id))
     const id = Math.max(...idMap)+1;
     const spID = sp.id;
-    const value = {id:id, spID, ...values };
-    // contexts.addOrder(value);
-    // props.history.push('/');
-    console.log(value)
+    const value = {id:id, spID:spID, ...values };
+    contexts.addOrder(value);
+    props.history.push('/');
   }
 
   return(
